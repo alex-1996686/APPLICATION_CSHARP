@@ -1,7 +1,8 @@
 
-DROP DATABASE IF EXISTS ppe;
-CREATE DATABASE ppe;
-use ppe;
+
+DROP DATABASE IF EXISTS ppeVilliers;
+CREATE DATABASE ppeVilliers;
+use ppeVilliers;
 
 CREATE TABLE participant (
   idp int(11) NOT NULL,
@@ -10,7 +11,7 @@ CREATE TABLE participant (
   departement varchar(11) NOT NULL,
   email varchar(128) NOT NULL,
   primary key(idp)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+);
 
 
 
@@ -27,7 +28,7 @@ CREATE TABLE salon (
   date_fin date NOT NULL,
   lieu varchar(128) NOT NULL,
   primary key(ids)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+);
 
 
 
@@ -44,11 +45,11 @@ CREATE TABLE users (
   pass varchar(128) NOT NULL,
   Role int(1) NOT NULL, 
   primary key(idu)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+);
 
 INSERT INTO users  VALUES
-(1,'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1),
-(2,'operateur', 'e8d08ecdc7c0b5cdcbfbe2c2bf7a328e5c10d476', 0);
+(1,'admin', 'admin', 1),
+(2,'operateur', 'operateur', 0);
 
 CREATE TABLE participer (
   idp int,
@@ -56,7 +57,8 @@ CREATE TABLE participer (
   primary key(idp,ids),
   foreign key(idp) references participant(idp),
   foreign key(ids) references salon(ids)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+);
 
 INSERT INTO participer VALUES
 (1, 5);
+
